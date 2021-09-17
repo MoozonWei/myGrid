@@ -1,0 +1,23 @@
+// $col-num 表示是几格的栅格系统
+$col-num: 12;
+
+// $padding 定义了单元格的左右 padding
+$padding: 15px;
+
+// 不同尺寸对应的分水岭 
+$xs-waterShed: 0px;
+$sm-waterShed: 576px;
+$md-waterShed: 768px;
+$lg-waterShed: 992px;
+$xl-waterShed: 1200px;
+// 不同尺寸对应的容器宽度
+$xs-container-width: 100%;
+$sm-container-width: 540px;
+$md-container-width: 720px;
+$lg-container-width: 920px;
+$xl-container-width: 1140px;
+
+$size-name-list: (xs, sm, md, lg, xl);
+$waterShed-list: ($xs-waterShed, $sm-waterShed, $md-waterShed, $lg-waterShed, $xl-waterShed);
+$waterShed-size-name-map: ($xs-waterShed: xs, $sm-waterShed: sm, $md-waterShed: md, $lg-waterShed: lg, $xl-waterShed: xl);
+$waterShed-container-width-map: ($xs-waterShed: $xs-container-width, $sm-waterShed: $sm-container-width, $md-waterShed: $md-container-width, $lg-waterShed: $lg-container-width, $xl-waterShed: $xl-container-width);

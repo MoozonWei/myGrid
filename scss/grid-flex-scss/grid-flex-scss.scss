@@ -1,0 +1,154 @@
+@import 'mixins';
+@import 'variables';
+
+%padding {
+    padding-left: $padding;
+    padding-right: $padding;
+}
+
+.grid-flex-container {
+    @extend %padding;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -$padding;
+    margin-right: -$padding;
+}
+
+@each $size-name in $size-name-list {
+    .col-#{$size-name} {
+        @extend %padding;
+    }
+    @for $i from 1 through $col-num {
+        .col-#{$size-name}-#{$i} {
+            @extend %padding;
+        }
+        
+    }
+}
+
+@each $waterShed in $waterShed-list {
+    @include mediaWatershed($waterShed) {
+        $size-name: map-get($waterShed-size-name-map, $waterShed);
+        $container-width: map-get($waterShed-container-width-map, $waterShed);
+
+        /* container-width */
+        .grid-flex-container {
+            width: $container-width;
+        }
+
+        /* col */
+        .col-#{$size-name} {
+            flex-basis: 0;
+            flex-grow: 1;
+        }
+        @for $i from 1 through $col-num {
+            .col-#{$size-name}-#{$i} {
+                flex: 0 0 100%*$i/$col-num;
+            }
+        }
+
+        /* offset */
+        @for $i from 0 through $col-num {
+            .col-#{$size-name}-offset-#{$i} {
+                margin-left: 100%*$i/$col-num;
+            }
+        }
+
+        /* push */
+        .col-#{$size-name}-push-0 {
+            left: auto;
+        }
+        @for $i from 1 through $col-num {
+            .col-#{$size-name}-push-#{$i} {
+                left: 100%*$i/$col-num;
+            }
+        }
+
+        /* pull */
+        .col-#{$size-name}-pull-0 {
+            right: auto;
+        }
+        @for $i from 1 through $col-num {
+            .col-#{$size-name}-pull-#{$i} {
+                right: 100%*$i/$col-num;
+            }
+        }
+
+        /* order */
+        .col-#{$size-name}-order-first {
+            order: -1;
+        }
+        @for $i from 0 through $col-num {
+            .col-#{$size-name}-order-#{$i} {
+                order: $i;
+            }
+        }
+        .col-#{$size-name}-order-last {
+            order: $col-num+1;
+        }
+
+        /* 显示 / 隐藏 */
+        .#{$size-name}-display {
+            display: block !important;
+        }
+        .#{$size-name}-dont-display {
+            display: none !important;
+        }
+
+    }
+}
+
+// .grid-float-container {
+//     padding-left: $padding;
+//     padding-right: $padding;
+//     margin-left: auto;
+//     margin-right: auto;
+//     @include mediaWatershed($xs) {
+//         width: $xs-container-width;
+//     }
+//     @include mediaWatershed($sm) {
+//         width: $sm-container-width;
+//     }
+//     @include mediaWatershed($md) {
+//         width: $md-container-width;
+//     }
+//     @include mediaWatershed($lg) {
+//         width: $lg-container-width;
+//     }
+//     @include mediaWatershed($xl) {
+//         width: $xl-container-width;
+//     }
+// }
+
+// .row {
+//     display: flex;
+//     flex-wrap: wrap;
+//     margin-left: -$padding;
+//     margin-right: -$padding;
+// }
+
+
+// // col
+// @each $size-name in $size-name-list {
+//     .col-#{$size-name} {
+//         padding-left: $padding;
+//         padding-right: $padding;
+//         flex-basis: 0;
+//         flex-grow: 1;
+//     }
+//     @for $i from 1 through $col-num {
+//         .col-#{$size-name}-#{$i} {
+//             padding-left: $padding;
+//             padding-right: $padding;
+//         }
+//     }
+// }
+
+// 

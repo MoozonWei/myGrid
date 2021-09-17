@@ -1,0 +1,5 @@
+@mixin mediaWatershed($waterShed) {
+    @media (min-width: $waterShed) {
+        @content;
+    }
+}
