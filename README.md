@@ -1,6 +1,6 @@
 # myGrid
 
-## 自实简易现栅格系统
+## 自实现简易栅格系统
 
 [demo](https://moozonwei.github.io/myGrid/index.html)
 
